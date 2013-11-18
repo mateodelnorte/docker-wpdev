@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Docker-wpdev by dz0ny</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Docker-wpdev</h1>
+        <p>Wordpress in Docker</p>
+        <p class="view"><a href="https://github.com/dz0ny/docker-wpdev">View the Project on GitHub <small>dz0ny/docker-wpdev</small></a></p>
+        <ul>
+          <li><a href="https://github.com/dz0ny/docker-wpdev/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/dz0ny/docker-wpdev/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/dz0ny/docker-wpdev">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="docker-wpdev" class="anchor" href="#docker-wpdev"><span class="octicon octicon-link"></span></a>docker-wpdev</h1>
+
+<p>A nice and easy way to get a Wordpress instance up and running using docker. For
+help on getting started with docker see the <a href="http://www.docker.io/gettingstarted/">official getting started guide</a>.
+For more information on Wordpress and check out it's <a href="https://wordpress.org">website</a>.</p>
+
+<p>It uses:</p>
+
+<ul>
+<li>PHP 5.5</li>
+<li>Xdebug  <a href="https://jtreminio.com/2012/07/xdebug-and-you-why-you-should-be-using-a-real-debugger/">see guide</a> for tips how to use</li>
+<li>Xcache</li>
+<li>Nginx</li>
+</ul><h2>
+<a name="building-docker-wpdev" class="anchor" href="#building-docker-wpdev"><span class="octicon octicon-link"></span></a>Building docker-wpdev</h2>
+
+<p>Running this will build you a docker image with the latest stable version of both
+docker-wpdev and Wordpress itself. You can use Git to manage your Wordpress version.</p>
+
+<pre><code>git clone https://github.com/dz0ny/docker-wpdev.git
+cd docker-wpdev
+git submodule update --init --recursive
+sudo docker build -t dz0ny/wpdev .
+</code></pre>
+
+<h2>
+<a name="notes-on-wordpress" class="anchor" href="#notes-on-wordpress"><span class="octicon octicon-link"></span></a>Notes on Wordpress</h2>
+
+<p>Everything you do is in the <code>web/content</code> folder(plugins, themes). This way all your code is
+separated from actual Wordpress install and enables you to quickly switch Wordpress versions.</p>
+
+<h2>
+<a name="running-docker-wpdev" class="anchor" href="#running-docker-wpdev"><span class="octicon octicon-link"></span></a>Running docker-wpdev</h2>
+
+<p>If this is the only thing running on your system you can map the port to 80 and no
+proxy is needed. i.e. <code>-p=80:80</code>.</p>
+
+<pre><code>sudo docker run -p=80:80 -v=$(pwd)/web:/srv/wordpress dz0ny/wpdev
+</code></pre>
+
+<p>From now on when you start/stop docker-wpdev you should use the container id
+with the following commands. To get your container id, after you initial run
+type <code>sudo docker ps</code> and it will show up on the left side followed by the image
+name which is <code>dz0ny/wpdev:latest</code>.</p>
+
+<pre><code>sudo docker start &lt;container_id&gt;
+sudo docker stop &lt;container_id&gt;
+</code></pre>
+
+<h3>
+<a name="notes-on-the-run-command" class="anchor" href="#notes-on-the-run-command"><span class="octicon octicon-link"></span></a>Notes on the run command</h3>
+
+<ul>
+<li>
+<code>-v</code> is the volume you are mounting <code>-v=host_dir:docker_dir</code>
+</li>
+<li>
+<code>dz0ny/wpdev</code> is simply what I called my docker build of this image</li>
+<li>
+<code>-d=true</code> allows this to run cleanly as a daemon, remove for debugging</li>
+<li>
+<code>-p</code> is the port it connects to, <code>-p=host_port:docker_port</code>
+</li>
+</ul>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/dz0ny">dz0ny</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-41748838-2");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
