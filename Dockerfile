@@ -42,10 +42,6 @@ RUN echo "zend_extension=/usr/lib/php5/20121212/xdebug.so" >> /etc/php5/fpm/php.
 RUN echo "xdebug.remote_enable=1" >> /etc/php5/fpm/php.ini
 RUN echo "xdebug.remote_connect_back=1" >> /etc/php5/fpm/php.ini
 RUN echo "xdebug.remote_port=9000" >> /etc/php5/fpm/php.ini
-RUN echo "xdebug.show_local_vars=0" >> /etc/php5/fpm/php.ini
-RUN echo "xdebug.var_display_max_data=10000" >> /etc/php5/fpm/php.ini
-RUN echo "xdebug.var_display_max_depth=20" >> /etc/php5/fpm/php.ini
-RUN echo "xdebug.show_exception_trace=0" >> /etc/php5/fpm/php.ini
 
 ADD ./nginx/default.conf /etc/nginx/sites-available/default
 
