@@ -37,11 +37,11 @@ RUN sed -i -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" /etc/php5/fpm/php.ini
 RUN sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php5/fpm/php-fpm.conf
 RUN find /etc/php5/cli/conf.d/ -name "*.ini" -exec sed -i -re 's/^(\s*)#(.*)/\1;\2/g' {} \;
 
-RUN echo "[xdebug]" >> /etc/php5/fpm/php.ini
-RUN echo "zend_extension=/usr/lib/php5/20121212/xdebug.so" >> /etc/php5/fpm/php.ini
-RUN echo "xdebug.remote_enable=1" >> /etc/php5/fpm/php.ini
-RUN echo "xdebug.remote_connect_back=1" >> /etc/php5/fpm/php.ini
-RUN echo "xdebug.remote_port=9000" >> /etc/php5/fpm/php.ini
+#RUN echo "[xdebug]" >> /etc/php5/fpm/php.ini
+#RUN echo "zend_extension=/usr/lib/php5/20121212/xdebug.so" >> /etc/php5/fpm/php.ini
+#RUN echo "xdebug.remote_enable=1" >> /etc/php5/fpm/php.ini
+#RUN echo "xdebug.remote_connect_back=1" >> /etc/php5/fpm/php.ini
+#RUN echo "xdebug.remote_port=9000" >> /etc/php5/fpm/php.ini
 
 ADD ./nginx/default.conf /etc/nginx/sites-available/default
 
