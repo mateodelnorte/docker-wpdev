@@ -46,7 +46,7 @@ define('NONCE_SALT',       '%--;9{~Ic,+Ppkz$h~q}p?UA ZnD&u8|k%< voWI)eO6Rx3o_=wy
 // Table prefix
 // Change this if you have multiple installs in the same database
 // ==============================================================
-
+$table_prefix='wp_';
 
 define( 'WP_DEBUG',         true );
 define( 'WP_DEBUG_LOG',     true );
